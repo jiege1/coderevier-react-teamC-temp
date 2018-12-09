@@ -1,5 +1,5 @@
 
-import { ITodoListModel } from '../types/index';
+import { ITodoListModel } from '../types';
 import { getTodoList } from 'api/todoList';
 
 const model: ITodoListModel = {
@@ -31,7 +31,20 @@ const model: ITodoListModel = {
     getListSuccess(state, { payload }) {
       return {
         ...state,
-        ...payload,
+        list: payload.list,
+      };
+    },
+    changeFinish(state, { payload }) {
+      console.log(payload);
+      return {
+        ...state,
+        finish: payload.finish,
+      };
+    },
+    delTodo(state, { payload }) {
+      return {
+        ...state,
+        list: payload.list,
       };
     },
   },

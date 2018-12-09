@@ -1,6 +1,6 @@
 
 import { ComponentType } from 'react';
-import { Model, EffectsMapObject, connect } from 'dva';
+import { Model } from 'dva';
 
 export interface IActionCreator<P> {
   type: string;
@@ -9,11 +9,12 @@ export interface IActionCreator<P> {
 
 export type Reducer<S> = (state: S, action: IActionCreator<S>) => S;
 
-export interface IModel<S, R> extends Model {
+export interface IModel<S> extends Model {
   state: S;
   // effects: E;
   reducers: {
-    [K in keyof R]: Reducer<S>;
+    // [K in keyof R]: Reducer<S>;
+    [key: string]: Reducer<S>;
   };
 }
 

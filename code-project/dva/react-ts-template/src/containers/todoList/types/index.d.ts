@@ -10,13 +10,17 @@ export interface IState extends IList<ITodo> {
 
 export interface IEffect {
   getTodoList: () => any;
+  changeFinish: (payload: Pick<IState, 'finish'>) => any;
+  delTodo: (id: Pick<ITodo, 'id'>) => any;
 }
 
 interface IReducers {
   getListSuccess: Reducer<IState>;
+  changeFinish: Reducer<IState>;
+  delTodo: (id: Pick<ITodo, 'id'>) => any;
 }
 
-export type ITodoListModel = IModel<IState, IReducers>;
+export type ITodoListModel = IModel<IState>;
 
 // export interface ITodoListModel extends IModel<> {
 //
